@@ -1,0 +1,12 @@
+.contactItem {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.deleteButton {
+  margin-left: 20px;
+}
+
+.deleteButton:hover {
+  background-color: red;
+}

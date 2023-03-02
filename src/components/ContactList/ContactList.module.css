@@ -1,0 +1,9 @@
+.contactList {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.errorMessage {
+  font-size: 15px;
+  color: red;
+}

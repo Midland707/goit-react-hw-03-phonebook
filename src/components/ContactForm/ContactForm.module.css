@@ -1,0 +1,26 @@
+.form {
+  border: 1px solid;
+  width: 300px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.formNameTitle {
+  display: block;
+  font-size: 15px;
+}
+
+.formInput {
+  display: block;
+  width: 180px;
+  margin-bottom: 20px;
+}
+
+.formButton {
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.formButton:hover {
+  background-color: aqua;
+}
