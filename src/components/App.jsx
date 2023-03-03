@@ -14,10 +14,17 @@ export class App extends Component {
     filter: '',
   };
 
-  onSubmitForm = data => {
-    this.setState(prevState => ({
-      contacts: [...prevState.contacts, data],
-    }));
+  onSubmitForm = (data, resetForm) => {
+    const { name } = data;
+    const alertState = this.state.contacts.findIndex(
+      contact => contact.name === name
+    );
+    if (alertState === -1) {
+      this.setState(prevState => ({
+        contacts: [...prevState.contacts, data],
+      }));
+      resetForm.reset();
+    } else alert(`${name} is already in contacts`);
   };
 
   onFilterByName = eventFilter => {
@@ -38,10 +45,7 @@ export class App extends Component {
     return (
       <div className={css.section}>
         <h1 className={css.title}>Phonebook</h1>
-        <ContactForm
-          onSubmitForm={this.onSubmitForm}
-          contacts={this.state.contacts}
-        />
+        <ContactForm onSubmitForm={this.onSubmitForm} />
         <h2 className={css.title}>Contacts</h2>
         <Filter onFilterByName={this.onFilterByName} />
         <ContactList

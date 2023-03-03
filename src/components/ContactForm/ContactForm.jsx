@@ -24,14 +24,7 @@ export class ContactForm extends Component {
 
   handleSubmit = eventSubmit => {
     eventSubmit.preventDefault();
-    const { name } = this.state;
-    const alertState = this.props.contacts.findIndex(
-      contact => contact.name === name
-    );
-    if (alertState === -1) {
-      this.props.onSubmitForm(this.makeContact());
-      eventSubmit.target.reset();
-    } else alert(`${name} is already in contacts`);
+    this.props.onSubmitForm(this.makeContact(), eventSubmit.target);
   };
 
   render() {
