@@ -5,7 +5,11 @@ export const ContactItem = ({ contacts, onClickDelete }) =>
   contacts.map(item => (
     <li key={item.id} className={css.contactItem}>
       {item.name}: {item.number}
-      <button id={item.id} className={css.deleteButton} onClick={onClickDelete}>
+      <button
+        id={item.id}
+        className={css.deleteButton}
+        onClick={() => onClickDelete(item.id)}
+      >
         {' '}
         Delete
       </button>

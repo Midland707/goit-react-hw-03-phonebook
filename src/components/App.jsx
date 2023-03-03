@@ -26,12 +26,19 @@ export class App extends Component {
   };
 
   onClickDelete = eventDelete => {
-    const array = [...this.state.contacts];
-    const index = this.state.contacts.findIndex(
-      option => option.id === eventDelete.target.id
-    );
-    if (index > -1) array.splice(index, 1);
-    this.setState({ contacts: array });
+    console.log(eventDelete);
+    // const array = [...this.state.contacts];
+    // const index = this.state.contacts.findIndex(
+    //   option => option.id === eventDelete.target.id
+    // );
+    // if (index > -1) array.splice(index, 1);
+    // this.setState({ contacts: array });
+
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(
+        contact => contact.eventDelete !== eventDelete
+      ),
+    }));
   };
 
   render() {
