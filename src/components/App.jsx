@@ -25,19 +25,9 @@ export class App extends Component {
     this.setState({ filter: filterValue });
   };
 
-  onClickDelete = eventDelete => {
-    console.log(eventDelete);
-    // const array = [...this.state.contacts];
-    // const index = this.state.contacts.findIndex(
-    //   option => option.id === eventDelete.target.id
-    // );
-    // if (index > -1) array.splice(index, 1);
-    // this.setState({ contacts: array });
-
+  onClickDelete = idDelete => {
     this.setState(prevState => ({
-      contacts: prevState.contacts.filter(
-        contact => contact.eventDelete !== eventDelete
-      ),
+      contacts: prevState.contacts.filter(contact => contact.id !== idDelete),
     }));
   };
 
