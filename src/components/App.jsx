@@ -15,11 +15,9 @@ export class App extends Component {
   };
 
   onSubmitForm = data => {
-    const contactsArray = this.state.contacts.slice(); // Create a copy
-    contactsArray.push(data); // Push the object
-    this.setState({
-      contacts: contactsArray,
-    });
+    this.setState(prevState => ({
+      contacts: [...prevState.contacts, data],
+    }));
   };
 
   onFilterByName = eventFilter => {
@@ -37,9 +35,9 @@ export class App extends Component {
   };
 
   render() {
-    const filterContacts = this.state.contacts.filter(contact =>
-      contact.name.toLocaleLowerCase().includes(this.state.filter)
-    );
+    // const filterContacts = this.state.contacts.filter(contact =>
+    //   contact.name.toLocaleLowerCase().includes(this.state.filter)
+    // );
     return (
       <div className={css.section}>
         <h1 className={css.title}>Phonebook</h1>
@@ -50,7 +48,8 @@ export class App extends Component {
         <h2 className={css.title}>Contacts</h2>
         <Filter onFilterByName={this.onFilterByName} />
         <ContactList
-          contacts={filterContacts}
+          // contacts={filterContacts}
+          contacts={this.state.contacts}
           filter={this.state.filter}
           onClickDelete={this.onClickDelete}
         />
