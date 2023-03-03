@@ -2,19 +2,9 @@ import PropTypes from 'prop-types';
 import css from './ContactList.module.css';
 import { ContactItem } from 'components/ContactList/ContactItem/ContactItem';
 
-export const ContactList = ({ contacts, onClickDelete, filter }) => (
+export const ContactList = ({ contacts, onClickDelete }) => (
   <ul className={css.contactList}>
-    {contacts[0] ? (
-      <ContactItem contacts={contacts} onClickDelete={onClickDelete} />
-    ) : (
-      <div className={css.errorMessage}>
-        {filter ? (
-          <span>I don't find it! Please repeat search!</span>
-        ) : (
-          <span>Contacts is empty!</span>
-        )}
-      </div>
-    )}
+    <ContactItem contacts={contacts} onClickDelete={onClickDelete} />
   </ul>
 );
 
@@ -27,5 +17,4 @@ ContactList.propTypes = {
     })
   ).isRequired,
   onClickDelete: PropTypes.func.isRequired,
-  filter: PropTypes.string.isRequired,
 };
