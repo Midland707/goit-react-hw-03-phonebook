@@ -16,10 +16,10 @@ export class App extends Component {
 
   onSubmitForm = (data, resetForm) => {
     const { name } = data;
-    const alertState = this.state.contacts.findIndex(
+    const alertState = this.state.contacts.find(
       contact => contact.name === name
     );
-    if (alertState === -1) {
+    if (!alertState) {
       this.setState(prevState => ({
         contacts: [...prevState.contacts, data],
       }));
