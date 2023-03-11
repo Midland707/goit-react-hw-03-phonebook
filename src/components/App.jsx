@@ -16,22 +16,17 @@ export class App extends Component {
 
   componentDidMount() {
     const contactsStorage = localStorage.getItem('contactsStorage');
-    console.log('Mount contactsStorage =', contactsStorage);
     const parsedContacts = JSON.parse(contactsStorage);
     if (parsedContacts) {
       this.setState({ contacts: parsedContacts });
-      console.log('Mount =', parsedContacts);
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.contacts !== prevState.contacts) {
-      console.log('Update');
-      localStorage.setItem(
-        'contactsStorage',
-        JSON.stringify(this.state.contacts)
-      );
-    }
+    localStorage.setItem(
+      'contactsStorage',
+      JSON.stringify(this.state.contacts)
+    );
   }
 
   onSubmitForm = (data, resetForm) => {
@@ -66,13 +61,19 @@ export class App extends Component {
       <div className={css.section}>
         <h1 className={css.title}>Phonebook</h1>
         <ContactForm onSubmitForm={this.onSubmitForm} />
-        <h2 className={css.title}>Contacts</h2>
-        <Filter onFilterByName={this.onFilterByName} />
-        <ContactList
-          contacts={filterContacts}
-          // contacts={this.state.contacts}
-          onClickDelete={this.onClickDelete}
-        />
+        {this.state.contacts.length ? (
+          <h2 className={css.title}>Contacts</h2>
+        ) : null}
+        {this.state.contacts.length ? (
+          <Filter onFilterByName={this.onFilterByName} />
+        ) : null}
+        {this.state.contacts.length ? (
+          <ContactList
+            contacts={filterContacts}
+            // contacts={this.state.contacts}
+            onClickDelete={this.onClickDelete}
+          />
+        ) : null}
       </div>
     );
   }
